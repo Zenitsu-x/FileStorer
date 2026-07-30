@@ -11,13 +11,13 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     
     if data == "about":
-        about_text = f"<b>○ Creator : <a href='tg://user?id={OWNER_ID}'>This Person</a>\n○ Language : <code>Python3</code>\n○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>\n○ Source Code : <a href='https://github.com/CodeXBotz/File-Sharing-Bot'>Click here</a>\n○ Channel : @CodeXBotz\n○ Support Group : @CodeXBotzSupport</b>"
+        about_text = f"<b>Nᴏ Iɴғᴏʀᴍᴀᴛɪᴏɴ !?</b>"
         
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🏠 Home", callback_data="home"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("• ʜᴏᴍᴇ", callback_data="home"),
+                    InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="close")
                 ]
             ]
         )
@@ -50,8 +50,8 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data="about"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("• ᴀʙᴏᴜᴛ ᴍᴇ", callback_data="about"),
+                    InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="close")
                 ]
             ]
         )
