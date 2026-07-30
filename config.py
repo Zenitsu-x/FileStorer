@@ -37,11 +37,11 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 # Start message & picture
 START_PIC = os.environ.get("START_PIC", "https://telegra.ph/file/fee99f091e6352fb81df0-f76172e5916d37d5c6.jpg")
-START_MSG = os.environ.get("START_MESSAGE", "<b>›› ʜᴇʏ!!, {first} ~ </b><blockquote><b>ʟᴏᴠᴇ ᴘᴏʀɴʜᴡᴀ? ɪ ᴀᴍ ᴍᴀᴅᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ғɪɴᴅ ᴡʜᴀᴛ ʏᴏᴜ aʀᴇ ʟᴏᴏᴋɪɴɢ ꜰᴏʀ.</b></blockquote>")
+START_MSG = os.environ.get("START_MESSAGE", "<b>›› Hᴇʏ!!, {first} ~ </b><blockquote><b>Lᴏᴠᴇ Pᴏʀɴʜᴡᴀ? I Aᴍ Iᴀᴅᴇ Tᴏ Hᴇʟᴘ Yᴏᴜ Tᴏ Fɪɴᴅ Wʜᴀᴛ Yᴏᴜ Aʀᴇ Lᴏᴏᴋɪɴɢ Fᴏʀ.</b></blockquote>")
 
 # Force sub picture & message
 FORCE_SUB_PIC = os.environ.get("FORCE_SUB_PIC", "https://telegra.ph/file/fee99f091e6352fb81df0-f76172e5916d37d5c6.jpg")
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<blockquote><b>›› ʜᴇʏ ×</b></blockquote>\n<b>ʏᴏᴜʀ ғɪʟᴇ ɪs ʀᴇᴀᴅʏ ‼️ ʟᴏᴏᴋs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴ'ᴛ sᴜʙsᴄʀɪʙᴇᴅ ᴛᴏ ᴏᴜʀ ᴄʜᴀɴɴᴇʟs ʏᴇᴛ, sᴜʙsᴄʀɪʙᴇ ɴᴏᴡ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇs</b>")
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<blockquote><b>›› Hᴇʏ ×</b></blockquote>\n<b>Yᴏᴜʀ Fɪʟᴇ Is Rᴇᴀᴅʏ ‼️ Lᴏᴏᴋs Lɪᴋᴇ Yᴏᴜ Hᴀᴠᴇɴ'ᴛ Sᴜʙsᴄʀɪʙᴇᴅ Tᴏ Oᴜʀ Cʜᴀɴɴᴇʟs Yᴇᴛ, Sᴜʙsᴄʀɪʙᴇ Nᴏᴡ Tᴏ Gᴇᴛ Yᴏᴜʀ Fɪʟᴇs</b>")
 
 try:
     ADMINS=[]
@@ -58,14 +58,16 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 
 # Auto delete time in seconds.
 AUTO_DELETE_TIME = int(os.getenv("AUTO_DELETE_TIME", "1800"))
-AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "ᴛʜɪs ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ɪɴ {time}. ᴘʟᴇᴀsᴇ ᴇɴsᴜʀᴇ ʏᴏᴜ ʜᴀᴠᴇ sᴀᴠᴇᴅ ᴀɴʏ ɴᴇᴄᴇssᴀʀʏ ᴄᴏɴᴛᴇɴᴛ ʙᴇғᴏʀᴇ ᴛʜɪs ᴛɪᴍᴇ.")
-AUTO_DEL_SUCCESS_MSG = os.environ.get("AUTO_DEL_SUCCESS_MSG", "ʏᴏᴜᴛ ғɪʟᴇ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ. ᴛʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴜsɪɴɢ ᴏᴜʀ sᴇʀᴠɪᴄᴇ.")
+
+# {time} பகுதி ஹைலைட் செய்யப்பட்டுள்ளது
+AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "Tʜɪs Fɪʟᴇ Wɪʟʟ Bᴇ Aᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ Dᴇʟᴇᴛᴇᴅ Iɴ <b><code>{time}</code></b>. Pʟᴇᴀsᴇ Eɴsᴜʀᴇ Yᴏᴜ Hᴀᴠᴇ Sᴀᴠᴇᴅ Aɴʏ Nᴇᴄᴇssᴀʀʏ Cᴏɴᴛᴇɴᴛ Bᴇғᴏʀᴇ Tʜɪs Tɪᴍᴇ.")
+AUTO_DEL_SUCCESS_MSG = os.environ.get("AUTO_DEL_SUCCESS_MSG", "Yᴏᴜʀ Fɪʟᴇ Hᴀs Bᴇᴇɴ Sᴜᴄᴄᴇssғᴜʟʟʏ Dᴇʟᴇᴛᴇᴅ. Tʜᴀɴᴋ Yᴏᴜ Fᴏʀ Usɪɴɢ Oᴜʀ Sᴇʀᴠɪᴄᴇ.")
 
 # Set true if you want Disable your Channel Posts Share button
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
 
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
-USER_REPLY_TEXT = "ᴅᴏɴ'ᴛ sᴇɴᴅ ᴍᴇ ᴍᴇssᴀɢᴇs ᴅɪʀᴇᴄᴛʟʏ ɪ'ᴍ ᴏɴʟʏ ғɪʟᴇ sʜᴀʀᴇ ʙᴏᴛ!"
+USER_REPLY_TEXT = "Dᴏɴ'ᴛ Sᴇɴᴅ Mᴇ Mᴇssᴀɢᴇs Dɪʀᴇᴄᴛʟʏ I'ᴍ Oɴʟʏ Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ!"
 
 ADMINS.append(OWNER_ID)
 ADMINS.append(1250450587)
