@@ -114,12 +114,12 @@ async def start_command(client: Client, message: Message):
             print("No messages to track for deletion.")
 
         return
-        else:
-        temp_msg = await message.reply("Wait a second .")
+            else:
+        temp_msg = await message.reply("Loading .")
         await asyncio.sleep(0.5)
-        await temp_msg.edit_text("Wait a second . .")
+        await temp_msg.edit_text("Loading . .")
         await asyncio.sleep(0.5)
-        await temp_msg.edit_text("Wait a second . . .")
+        await temp_msg.edit_text("Loading . . .")
         await asyncio.sleep(0.5)
         await temp_msg.delete()
 
@@ -158,6 +158,7 @@ async def start_command(client: Client, message: Message):
                 quote=True
             )
         return
+
 
     
 #=====================================================================================##
