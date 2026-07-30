@@ -59,9 +59,9 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 # Auto delete time in seconds.
 AUTO_DELETE_TIME = int(os.getenv("AUTO_DELETE_TIME", "1800"))
 
-# {time} பகுதி ஹைலைட் செய்யப்பட்டுள்ளது
-AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "Tʜɪs Fɪʟᴇ Wɪʟʟ Bᴇ Aᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ Dᴇʟᴇᴛᴇᴅ Iɴ <b><code>{time}</code></b>. Pʟᴇᴀsᴇ Eɴsᴜʀᴇ Yᴏᴜ Hᴀᴠᴇ Sᴀᴠᴇᴅ Aɴʏ Nᴇᴄᴇssᴀʀʏ Cᴏɴᴛᴇɴᴛ Bᴇғᴏʀᴇ Tʜɪs Tɪᴍᴇ.")
-AUTO_DEL_SUCCESS_MSG = os.environ.get("AUTO_DEL_SUCCESS_MSG", "Yᴏᴜʀ Fɪʟᴇ Hᴀs Bᴇᴇɴ Sᴜᴄᴄᴇssғᴜʟʟʏ Dᴇʟᴇᴛᴇᴅ. Tʜᴀɴᴋ Yᴏᴜ Fᴏʀ Usɪɴɢ Oᴜʀ Sᴇʀᴠɪᴄᴇ.")
+# {time} பகுதி லிங்க் உடன் ப்ளூ கலரில் ஹைலைட் செய்யப்பட்டுள்ளது
+AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "Tʜɪs Fɪʟᴇ Wɪʟʟ Bᴇ Aᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ Dᴇʟᴇᴛᴇᴅ Iɴ <a href='https://t.me/your_bot_username'><b>{time}</b></a>. Pʟᴇᴀsᴇ Eɴsᴜʀᴇ Yᴏᴜ Hᴀᴠᴇ Sᴀᴠᴇᴅ Aɴʏ Nᴇᴄᴇssᴀʀʏ Cᴏɴᴛᴇɴᴛ Bᴇғᴏʀᴇ Tʜɪs Tɪᴍᴇ.")
+AUTO_DEL_SUCCESS_MSG = os.environ.get("AUTO_DEL_SUCCESS_MSG", "Yᴏᴜʀ Fɪʟᴇ Hᴀs Bᴇᴇɴ Sᴜᴄᴄᴇssғᴜʟʟʏ Dᴇʟᴇᴛᴇᴅ. Tʜᴀɴᴋ Yᴏᴜ Fᴏʀ Usɪɴɢ Oᴜʀ Sᴇʀᴠɪced.")
 
 # Set true if you want Disable your Channel Posts Share button
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
