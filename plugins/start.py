@@ -161,7 +161,8 @@ async def start_command(client: Client, message: Message):
 
             delete_data = await client.send_message(
                 chat_id=message.from_user.id,
-                text=AUTO_DELETE_MSG.format(time=time_str)
+                text=AUTO_DELETE_MSG.format(time=time_str),
+                parse_mode=ParseMode.HTML
             )
             asyncio.create_task(delete_file(track_msgs, client, delete_data))
         else:
@@ -196,6 +197,7 @@ async def start_command(client: Client, message: Message):
                     mention=message.from_user.mention,
                     id=message.from_user.id
                 ),
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup,
                 quote=True
             )
@@ -208,6 +210,7 @@ async def start_command(client: Client, message: Message):
                     mention=message.from_user.mention,
                     id=message.from_user.id
                 ),
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup,
                 disable_web_page_preview=True,
                 quote=True
@@ -234,11 +237,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if query.message.photo:
             await query.message.edit_caption(
                 caption=about_text,
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup
             )
         else:
             await query.message.edit_text(
                 text=about_text,
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup,
                 disable_web_page_preview=True
             )
@@ -262,11 +267,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if query.message.photo:
             await query.message.edit_caption(
                 caption=start_text,
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup
             )
         else:
             await query.message.edit_text(
                 text=start_text,
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup,
                 disable_web_page_preview=True
             )
@@ -334,12 +341,14 @@ async def not_joined(client: Client, message: Message):
         await message.reply_photo(
             photo=FORCE_SUB_PIC,
             caption=formatted_force_msg,
+            parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(buttons),
             quote=True
         )
     else:
         await message.reply_text(
             text=formatted_force_msg,
+            parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(buttons),
             quote=True,
             disable_web_page_preview=True
@@ -348,7 +357,7 @@ async def not_joined(client: Client, message: Message):
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
+    msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG, parse_mode=ParseMode.HTML)
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
 
@@ -364,7 +373,7 @@ async def send_text(client: Bot, message: Message):
         deleted = 0
         unsuccessful = 0
 
-        pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
+        pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>", parse_mode=ParseMode.HTML)
         for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
@@ -392,9 +401,9 @@ Blocked Users: <code>{blocked}</code>
 Deleted Accounts: <code>{deleted}</code>
 Unsuccessful: <code>{unsuccessful}</code></b>"""
 
-        return await pls_wait.edit(status)
+        return await pls_wait.edit(status, parse_mode=ParseMode.HTML)
 
     else:
-        msg = await message.reply(REPLY_ERROR)
+        msg = await message.reply(REPLY_ERROR, parse_mode=ParseMode.HTML)
         await asyncio.sleep(8)
         await msg.delete()
