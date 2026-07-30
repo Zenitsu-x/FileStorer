@@ -115,11 +115,11 @@ async def start_command(client: Client, message: Message):
 
         return
             else:
-        temp_msg = await message.reply("Loading .")
+        temp_msg = await message.reply("Lᴏᴀᴅɪɴɢ .")
         await asyncio.sleep(0.5)
-        await temp_msg.edit_text("Loading . .")
+        await temp_msg.edit_text("Lᴏᴀᴅɪɴɢ . .")
         await asyncio.sleep(0.5)
-        await temp_msg.edit_text("Loading . . .")
+        await temp_msg.edit_text("Lᴏᴀᴅɪɴɢ . . .")
         await asyncio.sleep(0.5)
         await temp_msg.delete()
 
