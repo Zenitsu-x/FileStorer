@@ -1,46 +1,79 @@
-#(©)Codexbotz
+#(©)CodeXBotz
 
 from pyrogram import __version__
 from bot import Bot
-from config import OWNER_ID
+from config import OWNER_ID, START_MSG, START_PIC
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.enums import ParseMode
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     
     if data == "about":
-        await query.message.edit_text(
-            text=f"<b>○ Creator : <a href='tg://user?id={OWNER_ID}'>This Person</a>\n○ Language : <code>Python3</code>\n○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>\n○ Source Code : <a href='https://github.com/CodeXBotz/File-Sharing-Bot'>Click here</a>\n○ Channel : @CodeXBotz\n○ Support Group : @CodeXBotzSupport</b>",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
+        about_text = f"<b>○ Creator : <a href='tg://user?id={OWNER_ID}'>This Person</a>\n○ Language : <code>Python3</code>\n○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>\n○ Source Code : <a href='https://github.com/CodeXBotz/File-Sharing-Bot'>Click here</a>\n○ Channel : @CodeXBotz\n○ Support Group : @CodeXBotzSupport</b>"
+        
+        reply_markup = InlineKeyboardMarkup(
+            [
                 [
-                    [
-                        InlineKeyboardButton("🏠 Home", callback_data="home"),
-                        InlineKeyboardButton("🔒 Close", callback_data="close")
-                    ]
+                    InlineKeyboardButton("🏠 Home", callback_data="home"),
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
                 ]
-            )
+            ]
         )
+
+        # மெசேஜில் போட்டோ இருந்தால் Edit Caption, இல்லை என்றால் Edit Text
+        if query.message.photo:
+            await query.message.edit_caption(
+                caption=about_text,
+                parse_mode=ParseMode.HTML,
+                reply_markup=reply_markup
+            )
+        else:
+            await query.message.edit_text(
+                text=about_text,
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True,
+                reply_markup=reply_markup
+            )
         
     elif data == "home":
-        # திரும்பவும் மெயின் ஸ்டார்ட் மெசேஜ்க்கு போகும்
-        await query.message.edit_text(
-            text=f"<b>வணக்கம் {query.from_user.mention}! \n\nநான் உங்களுடைய ஃபைல் ஷேரிங் பாட்.</b>", # இங்க உங்க விருப்பமான ஸ்டார்ட் மெசேஜ் எழுதிக்கலாம்
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("ℹ️ About", callback_data="about"),
-                        InlineKeyboardButton("🔒 Close", callback_data="close")
-                    ]
-                ]
-            )
+        # உங்க மெயின் Start Message (Photo Caption அல்லது Text)
+        start_text = START_MSG.format(
+            first=query.from_user.first_name,
+            last=query.from_user.last_name,
+            username=None if not query.from_user.username else '@' + query.from_user.username,
+            mention=query.from_user.mention,
+            id=query.from_user.id
         )
+
+        reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("😊 About Me", callback_data="about"),
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                ]
+            ]
+        )
+
+        # Home அழுத்தும்போது திரும்பவும் மெயின் Start Photo/Text-க்கே மாறும்
+        if query.message.photo:
+            await query.message.edit_caption(
+                caption=start_text,
+                parse_mode=ParseMode.HTML,
+                reply_markup=reply_markup
+            )
+        else:
+            await query.message.edit_text(
+                text=start_text,
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True,
+                reply_markup=reply_markup
+            )
         
     elif data == "close":
         await query.message.delete()
         try:
             await query.message.reply_to_message.delete()
-        except:
+        except Exception:
             pass
