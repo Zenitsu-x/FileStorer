@@ -37,12 +37,17 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 # Start message & picture
 START_PIC = os.environ.get("START_PIC", "https://telegra.ph/file/fee99f091e6352fb81df0-f76172e5916d37d5c6.jpg")
-START_MSG = os.environ.get("START_MESSAGE", "<b>›› Hᴇʏ!!, {first} ~ </b><blockquote><b>Lᴏᴠᴇ Pᴏʀɴʜᴡᴀ? I Aᴍ Iᴀᴅᴇ Tᴏ Hᴇʟᴘ Yᴏᴜ Tᴏ Fɪɴᴅ Wʜᴀᴛ Yᴏᴜ Aʀᴇ Lᴏᴏᴋɪɴɢ Fᴏʀ.</b></blockquote>")
+START_MSG = os.environ.get(
+    "START_MESSAGE", 
+    "<b>›› Hᴇʏ!!, {first} ~</b>\n<blockquote>Lᴏᴠᴇ Pᴏʀɴʜᴡᴀ? I Aᴍ Mᴀᴅᴇ Tᴏ Hᴇʟᴘ Yᴏᴜ Tᴏ Fɪɴᴅ Wʜᴀᴛ Yᴏᴜ Aʀᴇ Lᴏᴏᴋɪɴɢ Fᴏʀ.</blockquote>"
+)
 
 # Force sub picture & message
 FORCE_SUB_PIC = os.environ.get("FORCE_SUB_PIC", "https://telegra.ph/file/fee99f091e6352fb81df0-f76172e5916d37d5c6.jpg")
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<blockquote><b>›› Hᴇʏ ×</b></blockquote>\n<b>Yᴏᴜʀ Fɪʟᴇ Is Rᴇᴀᴅʏ ‼️ Lᴏᴏᴋs Lɪᴋᴇ Yᴏᴜ Hᴀᴠᴇɴ'ᴛ Sᴜʙsᴄʀɪʙᴇᴅ Tᴏ Oᴜʀ Cʜᴀɴɴᴇʟs Yᴇᴛ, Sᴜʙsᴄʀɪʙᴇ Nᴏᴡ Tᴏ Gᴇᴛ Yᴏᴜʀ Fɪʟᴇs</b>")
-
+FORCE_MSG = os.environ.get(
+    "FORCE_SUB_MESSAGE", 
+    "<blockquote>›› Hᴇʏ ×\n\nYᴏᴜʀ Fɪʟᴇ Is Rᴇᴀᴅʏ ‼️ Lᴏᴏᴋs Lɪᴋᴇ Yᴏᴜ Hᴀᴠᴇɴ'ᴛ SᴜʙsᴄʀɪBER Tᴏ Oᴜʀ Cʜᴀɴɴᴇʟs Yᴇᴛ, Sᴜʙsᴄʀɪʙᴇ Nᴏᴡ Tᴏ Gᴇᴛ Yᴏᴜʀ Fɪʟᴇs</blockquote>"
+)
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
