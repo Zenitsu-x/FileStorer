@@ -60,7 +60,7 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 AUTO_DELETE_TIME = int(os.getenv("AUTO_DELETE_TIME", "1800"))
 
 # {time} பகுதி லிங்க் உடன் ப்ளூ கலரில் ஹைலைட் செய்யப்பட்டுள்ளது
-AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "Tʜɪs Fɪʟᴇ Wɪʟʟ Bᴇ Aᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ Dᴇʟᴇᴛᴇᴅ Iɴ <a href='https://t.me/your_bot_username'><b>{time}</b></a>. Pʟᴇᴀsᴇ Eɴsᴜʀᴇ Yᴏᴜ Hᴀᴠᴇ Sᴀᴠᴇᴅ Aɴʏ Nᴇᴄᴇssᴀʀʏ Cᴏɴᴛᴇɴᴛ Bᴇғᴏʀᴇ Tʜɪs Tɪᴍᴇ.")
+AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "Tʜɪs Fɪʟᴇ Wɪʟʟ Bᴇ Aᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ Dᴇʟᴇᴛᴇᴅ Iɴ <a href='https://t.me/Sonic_FileStore_Bot'><b>{time}</b></a>. Pʟᴇᴀsᴇ Eɴsᴜʀᴇ Yᴏᴜ Hᴀᴠᴇ Sᴀᴠᴇᴅ Aɴʏ Nᴇᴄᴇssᴀʀʏ Cᴏɴᴛᴇɴᴛ Bᴇғᴏʀᴇ Tʜɪs Tɪᴍᴇ.")
 AUTO_DEL_SUCCESS_MSG = os.environ.get("AUTO_DEL_SUCCESS_MSG", "Yᴏᴜʀ Fɪʟᴇ Hᴀs Bᴇᴇɴ Sᴜᴄᴄᴇssғᴜʟʟʏ Dᴇʟᴇᴛᴇᴅ. Tʜᴀɴᴋ Yᴏᴜ Fᴏʀ Usɪɴɢ Oᴜʀ Sᴇʀᴠɪced.")
 
 # Set true if you want Disable your Channel Posts Share button
