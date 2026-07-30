@@ -63,11 +63,11 @@ async def start_command(client: Client, message: Message):
             return
 
         # Animated Please Wait Animation
-        temp_msg = await message.reply("Please wait .")
+        temp_msg = await message.reply("Pʟᴇᴀsᴇ Wᴀɪᴛ! .")
         await asyncio.sleep(0.4)
-        await temp_msg.edit_text("Please wait . .")
+        await temp_msg.edit_text("Pʟᴇᴀsᴇ Wᴀɪᴛ! . .")
         await asyncio.sleep(0.4)
-        await temp_msg.edit_text("Please wait . . .")
+        await temp_msg.edit_text("Pʟᴇᴀsᴇ Wᴀɪᴛ! . . .")
         await asyncio.sleep(0.4)
 
         try:
@@ -149,9 +149,20 @@ async def start_command(client: Client, message: Message):
                     pass
 
         if track_msgs:
+            # வினாடிகளை மணிநேரம் / நிமிடங்களாக மாற்றுதல்
+            minutes = AUTO_DELETE_TIME // 60
+            hours = minutes // 60
+            
+            if hours > 0:
+                time_str = f"{hours} hours"
+            elif minutes > 0:
+                time_str = f"{minutes} minutes"
+            else:
+                time_str = f"{AUTO_DELETE_TIME} seconds"
+
             delete_data = await client.send_message(
                 chat_id=message.from_user.id,
-                text=AUTO_DELETE_MSG.format(time=AUTO_DELETE_TIME)
+                text=AUTO_DELETE_MSG.format(time=time_str)
             )
             asyncio.create_task(delete_file(track_msgs, client, delete_data))
         else:
@@ -160,7 +171,7 @@ async def start_command(client: Client, message: Message):
         return
 
     else:
-        temp_msg = await message.reply("Lᴏᴀᴅɪɴgin .")
+        temp_msg = await message.reply("Lᴏᴀᴅɪɴɢ .")
         await asyncio.sleep(0.5)
         await temp_msg.edit_text("Lᴏᴀᴅɪɴɢ . .")
         await asyncio.sleep(0.5)
