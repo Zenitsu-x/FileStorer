@@ -225,7 +225,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     data = query.data
 
     if data == "about":
-        about_text = f"<b>Bot Information:</b>\n\n<b>Name:</b> File Share Bot\n<b>Developer:</b> CodeXBotz\n<b>Language:</b> Python 3\n<b>Library:</b> Pyrogram"
+        about_text = "Nᴏ Iɴғᴏʀᴍᴀᴛɪᴏɴ !"
         reply_markup = InlineKeyboardMarkup(
             [
                 [
