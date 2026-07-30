@@ -1,4 +1,4 @@
-#(©)CodeXBotz
+#(©)CodeXBotez
 
 import os
 import asyncio
