@@ -114,7 +114,7 @@ async def start_command(client: Client, message: Message):
             print("No messages to track for deletion.")
 
         return
-        else:
+       else:
         temp_msg = await message.reply("Lᴏᴀᴅɪɴɢ .")
         await asyncio.sleep(0.5)
         await temp_msg.edit_text("Lᴏᴀᴅɪɴɢ . .")
