@@ -8,7 +8,11 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, START_PIC, AUTO_DELETE_TIME, AUTO_DELETE_MSG, JOIN_REQUEST_ENABLE, FORCE_SUB_CHANNEL
+from config import (
+    ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, 
+    PROTECT_CONTENT, START_PIC, AUTO_DELETE_TIME, AUTO_DELETE_MSG, 
+    JOIN_REQUEST_ENABLE, FORCE_SUB_CHANNEL, FORCE_SUB_PIC
+)
 from helper_func import subscribed, decode, get_messages, delete_file
 from database.database import add_user, del_user, full_userbase, present_user
 
@@ -58,12 +62,20 @@ async def start_command(client: Client, message: Message):
         else:
             return
 
-        temp_msg = await message.reply("Please wait...")
+        # Animated Please Wait Animation
+        temp_msg = await message.reply("Please wait .")
+        await asyncio.sleep(0.4)
+        await temp_msg.edit_text("Please wait . .")
+        await asyncio.sleep(0.4)
+        await temp_msg.edit_text("Please wait . . .")
+        await asyncio.sleep(0.4)
+
         try:
             messages = await get_messages(client, ids)
         except Exception:
-            await message.reply_text("Something went wrong..!")
+            await temp_msg.edit_text("Something went wrong..!")
             return
+            
         await temp_msg.delete()
 
         track_msgs = []
@@ -141,7 +153,6 @@ async def start_command(client: Client, message: Message):
                 chat_id=message.from_user.id,
                 text=AUTO_DELETE_MSG.format(time=AUTO_DELETE_TIME)
             )
-            # Schedule the file deletion task after all messages have been copied
             asyncio.create_task(delete_file(track_msgs, client, delete_data))
         else:
             print("No messages to track for deletion.")
@@ -149,7 +160,7 @@ async def start_command(client: Client, message: Message):
         return
 
     else:
-        temp_msg = await message.reply("Lᴏᴀᴅɪɴɢ .")
+        temp_msg = await message.reply("Lᴏᴀᴅɪɴgin .")
         await asyncio.sleep(0.5)
         await temp_msg.edit_text("Lᴏᴀᴅɪɴɢ . .")
         await asyncio.sleep(0.5)
@@ -236,18 +247,29 @@ async def not_joined(client: Client, message: Message):
     except IndexError:
         pass
 
-    await message.reply(
-        text=FORCE_MSG.format(
-            first=message.from_user.first_name,
-            last=message.from_user.last_name,
-            username=None if not message.from_user.username else '@' + message.from_user.username,
-            mention=message.from_user.mention,
-            id=message.from_user.id
-        ),
-        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True,
-        disable_web_page_preview=True
+    formatted_force_msg = FORCE_MSG.format(
+        first=message.from_user.first_name,
+        last=message.from_user.last_name,
+        username=None if not message.from_user.username else '@' + message.from_user.username,
+        mention=message.from_user.mention,
+        id=message.from_user.id
     )
+
+    # Force Sub Pic Support
+    if FORCE_SUB_PIC:
+        await message.reply_photo(
+            photo=FORCE_SUB_PIC,
+            caption=formatted_force_msg,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            quote=True
+        )
+    else:
+        await message.reply_text(
+            text=formatted_force_msg,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            quote=True,
+            disable_web_page_preview=True
+        )
 
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
@@ -274,7 +296,7 @@ async def send_text(client: Bot, message: Message):
                 await broadcast_msg.copy(chat_id)
                 successful += 1
             except FloodWait as e:
-                await asyncio.sleep(e.value)  # Changed e.x to e.value for Pyrogram v2+
+                await asyncio.sleep(e.value)
                 await broadcast_msg.copy(chat_id)
                 successful += 1
             except UserIsBlocked:
