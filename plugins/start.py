@@ -149,7 +149,6 @@ async def start_command(client: Client, message: Message):
                     pass
 
         if track_msgs:
-            # வினாடிகளை மணிநேரம் / நிமிடங்களாக மாற்றுதல்
             minutes = AUTO_DELETE_TIME // 60
             hours = minutes // 60
             
@@ -227,7 +226,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⬅️ Back", callback_data="home"),
+                    InlineKeyboardButton("🏠 Home", callback_data="home"),
                     InlineKeyboardButton("🔒 Close", callback_data="close")
                 ]
             ]
