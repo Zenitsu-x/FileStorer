@@ -114,50 +114,50 @@ async def start_command(client: Client, message: Message):
             print("No messages to track for deletion.")
 
         return
-    else:
-    temp_msg = await message.reply("Wait a second .")
-    await asyncio.sleep(0.5)
-    await temp_msg.edit_text("Wait a second . .")
-    await asyncio.sleep(0.5)
-    await temp_msg.edit_text("Wait a second . . .")
-    await asyncio.sleep(0.5)
-    await temp_msg.delete()
+        else:
+        temp_msg = await message.reply("Wait a second .")
+        await asyncio.sleep(0.5)
+        await temp_msg.edit_text("Wait a second . .")
+        await asyncio.sleep(0.5)
+        await temp_msg.edit_text("Wait a second . . .")
+        await asyncio.sleep(0.5)
+        await temp_msg.delete()
 
-    reply_markup = InlineKeyboardMarkup(
-        [
+        reply_markup = InlineKeyboardMarkup(
             [
-                InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                InlineKeyboardButton("🔒 Close", callback_data = "close")
+                [
+                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
+                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                ]
             ]
-        ]
-    )
-    if START_PIC:
-        await message.reply_photo(
-            photo=START_PIC,
-            caption=START_MSG.format(
-                first=message.from_user.first_name,
-                last=message.from_user.last_name,
-                username=None if not message.from_user.username else '@' + message.from_user.username,
-                mention=message.from_user.mention,
-                id=message.from_user.id
-            ),
-            reply_markup=reply_markup,
-            quote=True
         )
-    else:
-        await message.reply_text(
-            text=START_MSG.format(
-                first=message.from_user.first_name,
-                last=message.from_user.last_name,
-                username=None if not message.from_user.username else '@' + message.from_user.username,
-                mention=message.from_user.mention,
-                id=message.from_user.id
-            ),
-            reply_markup=reply_markup,
-            disable_web_page_preview=True,
-            quote=True
-        )
-    return
+        if START_PIC:
+            await message.reply_photo(
+                photo=START_PIC,
+                caption=START_MSG.format(
+                    first=message.from_user.first_name,
+                    last=message.from_user.last_name,
+                    username=None if not message.from_user.username else '@' + message.from_user.username,
+                    mention=message.from_user.mention,
+                    id=message.from_user.id
+                ),
+                reply_markup=reply_markup,
+                quote=True
+            )
+        else:
+            await message.reply_text(
+                text=START_MSG.format(
+                    first=message.from_user.first_name,
+                    last=message.from_user.last_name,
+                    username=None if not message.from_user.username else '@' + message.from_user.username,
+                    mention=message.from_user.mention,
+                    id=message.from_user.id
+                ),
+                reply_markup=reply_markup,
+                disable_web_page_preview=True,
+                quote=True
+            )
+        return
 
     
 #=====================================================================================##
