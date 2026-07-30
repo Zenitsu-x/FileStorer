@@ -182,8 +182,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data="about"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("• ᴀʙᴏᴜᴛ ᴍᴇ", callback_data="about"),
+                    InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="close")
                 ]
             ]
         )
@@ -229,8 +229,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🏠 Home", callback_data="home"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("• ʜᴏᴍᴇ", callback_data="home"),
+                    InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="close")
                 ]
             ]
         )
@@ -252,8 +252,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data="about"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("• ᴀʙᴏᴜᴛ ᴍᴇ", callback_data="about"),
+                    InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="close")
                 ]
             ]
         )
