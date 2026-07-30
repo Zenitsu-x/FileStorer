@@ -4,7 +4,7 @@ import os
 import asyncio
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
@@ -214,6 +214,70 @@ async def start_command(client: Client, message: Message):
                 quote=True
             )
         return
+
+
+#======================================== CALLBACKS =====================================##
+
+@Bot.on_callback_query()
+async def cb_handler(client: Client, query: CallbackQuery):
+    data = query.data
+
+    if data == "about":
+        about_text = f"<b>Bot Information:</b>\n\n<b>Name:</b> File Share Bot\n<b>Developer:</b> CodeXBotz\n<b>Language:</b> Python 3\n<b>Library:</b> Pyrogram"
+        reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("⬅️ Back", callback_data="home"),
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                ]
+            ]
+        )
+        if query.message.photo:
+            await query.message.edit_caption(
+                caption=about_text,
+                reply_markup=reply_markup
+            )
+        else:
+            await query.message.edit_text(
+                text=about_text,
+                reply_markup=reply_markup,
+                disable_web_page_preview=True
+            )
+
+    elif data == "home":
+        reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("😊 About Me", callback_data="about"),
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                ]
+            ]
+        )
+        start_text = START_MSG.format(
+            first=query.from_user.first_name,
+            last=query.from_user.last_name,
+            username=None if not query.from_user.username else '@' + query.from_user.username,
+            mention=query.from_user.mention,
+            id=query.from_user.id
+        )
+        if query.message.photo:
+            await query.message.edit_caption(
+                caption=start_text,
+                reply_markup=reply_markup
+            )
+        else:
+            await query.message.edit_text(
+                text=start_text,
+                reply_markup=reply_markup,
+                disable_web_page_preview=True
+            )
+
+    elif data == "close":
+        await query.message.delete()
+        try:
+            await query.message.reply_to_message.delete()
+        except Exception:
+            pass
 
 
 #=====================================================================================##
